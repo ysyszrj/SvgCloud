@@ -51,7 +51,7 @@
 	
 	//start from here to draw word cloud 
     var drawWordCloud = function() {
-		var svg=d3.select("#"+$this.attr("id")).append("svg").attr("width",$this.width()).attr("height",$this.height()).attr("id","wordcloudsvg");
+		var svg=d3.select($this.selector).append("svg").attr("width",$this.width()).attr("height",$this.height()).attr("id","wordcloudsvg");
 	
       // Helper function to test if an element overlaps others
       var hitTest = function(elem, other_elems) {

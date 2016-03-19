@@ -7,7 +7,7 @@ I code this plugin refer to JQcloud(http://www.lucaongaro.eu/demos/jqcloud/), wh
 For different usage I upload different version of SvgCloud.
 ### svgcloud.1.x.js 
 This version just visualization the words and the wight.It shows all word with one color,you can set the font color with the option of "font-color".
- 
+![svgcloud.1.x.js](image/SvgCloud1.png)
 
 ## Installation
 1. Make sure to import jquery.js and d3.js in your project.
@@ -22,10 +22,10 @@ You can see the detail usage in the package of examples. However, there are some
 
 #### Cloud Options:
 
-jQCloud accepts an object containing configurations for the whole cloud as the second argument:
+SvgCloud accepts an object containing configurations for the whole cloud as the second argument:
 
 ```javascript
-$("#example").jQCloud(word_list, {
+$("#example").SvgCloud(word_list, {
   width: 300,
   height: 200
 });
