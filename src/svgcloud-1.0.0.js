@@ -15,11 +15,7 @@
     var $this = this;
     // Namespace word ids to avoid collisions between multiple clouds
     var cloud_namespace = $this.attr('id') || Math.floor((Math.random()*1000000)).toString(36);
-	
-	var color1=["#A50026","#D73027","#F46D43","#FDAE61","#FEE08B","#FFFFBF","#D9EF8B","#A6D96A","#66BD63","#1A9850","#006837"];
-	
-	var color2=["#dadaeb","#bcbddc","#9e9ac8","#807dba","#6a51a3","#54278f","#3f007d"];
-	
+
     // Default options value
     var default_options = {
       width: $this.width(),
@@ -37,8 +33,6 @@
 	
     options = $.extend(default_options, options || {});
 	
-	var hightlightedwords=new Array();
-	var clickgroups=new Array();
 
     // Add the "jqcloud" class to the container for easy CSS styling, set container width/height
     //$this.addClass("jqcloud").width(options.width).height(options.height);
@@ -79,7 +73,7 @@
           }
           return false;
         };
-        var i = 0;
+        var i;
         // Check elements for overlap one by one, stop and return false as soon as an overlap is found
         for(i = 0; i < other_elems.length; i++) {
           if (overlapping(elem, other_elems[i])) {
@@ -105,7 +99,6 @@
       var drawOneWord = function(index, word) {
         // Define the ID attribute of the span that will wrap the word, and the associated jQuery selector string
         var word_id = cloud_namespace + "_word_" + index,
-            word_selector = "#" + word_id,
             angle = 6.28 * Math.random(),
             radius = 0.0,
 
@@ -203,7 +196,7 @@
 
         // Don't render word if part of it would be outside the container
         if (options.removeOverflowing && (left < 0 || top < 0 || (left + width) > options.width || (top + height) > options.height)) {
-          word_span.remove()
+          word_span.remove();
           return;
         }
 
