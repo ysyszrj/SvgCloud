@@ -7,7 +7,7 @@ I code this plugin refer to [JQcloud](http://www.lucaongaro.eu/demos/jqcloud/), 
 For different usage I upload different version of SvgCloud.
 ### svgcloud.1.x.js 
 This version just visualization the words and the wight.It shows all word with one color,you can set the font color with the option of "font-color".
-Example is [here](ysyszrj.github.io/svgcloud/SvgCloud_1_font-size.html)
+Example is [here](http://ysyszrj.github.io/svgcloud/SvgCloud_1_font-size.html)
 
 
 ![svgcloud.1.x.js](image/SvgCloud1.png)
