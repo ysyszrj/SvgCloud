@@ -1,12 +1,13 @@
 # SvgCloud:word cloud for svg layout
 
 SvgCloud is a Jquery plugin that build svg word cloud and extend for more function.
-I code this plugin refer to JQcloud(http://www.lucaongaro.eu/demos/jqcloud/), which is a jQuery plugin that builds neat and pure HTML + CSS word clouds
+I code this plugin refer to [JQcloud](http://www.lucaongaro.eu/demos/jqcloud/), which is a jQuery plugin that builds neat and pure HTML + CSS word clouds
 
 ## different version
 For different usage I upload different version of SvgCloud.
 ### svgcloud.1.x.js 
 This version just visualization the words and the wight.It shows all word with one color,you can set the font color with the option of "font-color".
+Example is [here](ysyszrj.github.io/svgcloud/SvgCloud_1_font-size.html)
 ![svgcloud.1.x.js](image/SvgCloud1.png)
 
 ## Installation
