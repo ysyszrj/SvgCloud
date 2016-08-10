@@ -1,0 +1,29 @@
+{
+
+  "name": "svg-cloud",
+  "description": "SvgCloud is a Jquery plugin that build svg word cloud and extend for more function.\r I code this plugin refer to [JQcloud](http://www.lucaongaro.eu/demos/jqcloud/), which is a jQuery plugin that builds neat and pure HTML + CSS word clouds\r >SvgCloud是",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ysyszrj/SvgCloud.git"
+  },
+  "keywords": [
+    "wordcloud"
+  ],
+  "author": "zrj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ysyszrj/SvgCloud/issues"
+  },
+  "homepage": "https://github.com/ysyszrj/SvgCloud#readme",
+   "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

@@ -7,19 +7,21 @@
  * modefying the code of jQCloud(https://github.com/lucaong/)
 */
 
-(function( $ ) {
+(function( exports ) {
   "use strict";
 
   function svgCss(prop) {
     var rect = this.getBoundingClientRect();
     return rect[prop];
   }
+
+
   
-  $.fn.SvgCloud = function(word_array, options) {
+  exports.SvgCloud = function(selector,word_array, options) {
     // Reference to the container element
-    var $this = this;
+    var $this = document.querySelector(selector);
     // Namespace word ids to avoid collisions between multiple clouds
-    var cloud_namespace = $this.attr('id') || Math.floor((Math.random()*1000000)).toString(36);
+    var cloud_namespace = $this.getAttribute('id') || Math.floor((Math.random()*1000000)).toString(36);
    
     // Default options value
     var default_options = {
@@ -267,9 +269,8 @@
 	
     // Delay execution so that the browser can render the page before the computatively intensive word cloud drawing
 	drawWordCloud();
-	
-	
+    
     //setTimeout(function(){drawWordCloud();}, 1);
     return $this;
   };
-})(jQuery);
+})(window);
