@@ -7,14 +7,21 @@
  * modefying the code of jQCloud(https://github.com/lucaong/)
 */
 
-(function( $ ) {
+(function( exports ) {
   "use strict";
+
+  function svgCss(prop) {
+    var rect = this.getBoundingClientRect();
+    return rect[prop];
+  }
+
+
   
-  $.fn.SvgCloud = function(word_array, options) {
+  exports.SvgCloud = function(selector,word_array, options) {
     // Reference to the container element
-    var $this = this;
+    var $this = document.querySelector(selector);
     // Namespace word ids to avoid collisions between multiple clouds
-    var cloud_namespace = $this.attr('id') || Math.floor((Math.random()*1000000)).toString(36);
+    var cloud_namespace = $this.getAttribute('id') || Math.floor((Math.random()*1000000)).toString(36);
    
     // Default options value
     var default_options = {
@@ -44,26 +51,33 @@
 	
 	//start from here to draw word cloud 
     var drawWordCloud = function() {
-        var svg = $("<svg></svg>").attr("width",$this.width()).attr("height",$this.height()).attr("class","wordcloudsvg")
+      var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("width",$this.width());
+      svg.setAttribute("height",$this.height());
+      svg.setAttribute("class","wordcloudsvg");
+      // svg = $(svg).attr("width",$this.width()).attr("height",$this.height()).attr("class","wordcloudsvg")
       $this.append(svg);
       // Helper function to test if an element overlaps others
       var hitTest = function(elem, other_elems) {
         // Pairwise overlap detection
         var overlapping = function(a, b) {
-			var aleft=parseInt(a.attr("x"));
-			var abotton=parseInt(a.attr("y"));
-			var awidth=parseInt(a.css("width"));
-			var aheight=parseInt(a.css("height"));
-			var bleft=parseInt(b.attr("x"));
-			var bbotton=parseInt(b.attr("y")); 
-			var bwidth=parseInt(b.css("width"));
-			var bheight=parseInt(b.css("height"));
+			var aleft=parseInt(a.getAttribute("x"));
+			var abotton=parseInt(a.getAttribute("y"));
+
+
+			var awidth=parseInt(svgCss.call(a,"width"));
+			var aheight=parseInt(svgCss.call(a,"height"));
+
+			var bleft=parseInt(b.getAttribute("x"));
+			var bbotton=parseInt(b.getAttribute("y"));
+			var bwidth=parseInt(svgCss.call(b,"width"));
+			var bheight=parseInt(svgCss.call(b,"height"));
 			
 			var acx=aleft+awidth/2;
 			var acy=abotton-aheight/2;
 			var bcx=bleft+bwidth/2;
 			var bcy=bbotton-bheight/2;
-			
+          
           if (Math.abs(2.0*acx-2.0*bcx) < awidth + bwidth) {
             if (Math.abs(2.0*acy -2.0*bcy ) < aheight + bheight) {
 				//overlap
@@ -86,7 +100,6 @@
       for (var i = 0; i < word_array.length; i++) {
         word_array[i].weight = parseFloat(word_array[i].weight, 10);
       }
-
       // Sort word_array from the word with the highest weight to the one with the lowest
       word_array.sort(function(a, b) { if (a.weight < b.weight) {return 1;} else if (a.weight > b.weight) {return -1;} else {return 0;} });
 
@@ -125,9 +138,20 @@
           weight = Math.round((word.weight - word_array[word_array.length - 1].weight) /
                               (word_array[0].weight - word_array[word_array.length - 1].weight) * 9.0) + 1;
         }
-        word_span = $("<g></g>").attr("class","wd").append("text").attr("class",'w' + weight + " " + custom_class)
-          .attr("id",word.html.id).attr("fill",options.font_color).css("font-size",weight*5);
-        word_span =svg.append(word_span);
+        word_span = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        word_span.setAttribute("class",'w' + weight + " " + custom_class);
+        word_span.setAttribute("id",word.html.id);
+        word_span.setAttribute("fill",options.font_color);
+        word_span.style.fontSize = weight*5;
+        // ("font-size",weight*5);
+        // var word_span = $("<text></text>").attr("class",'w' + weight + " " + custom_class)
+        //   .attr("id",word.html.id).attr("fill",options.font_color).css("font-size",weight*5);
+        var wg = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        wg.setAttribute("class","wd");
+        wg.appendChild(word_span)
+        // var wg = $("<g></g>").attr("class","wd").append(word_span);
+        svg.appendChild(wg);
+        // svg.append(wg);
 
 
         // Append link if word.url attribute was set
@@ -147,19 +171,22 @@
           inner_html = word.text;
         }
 		
-		
-        word_span.text(word.text);
 
+        // word_span.text(word.text);
+        word_span.textContent = word.text;
 
 		//***********************add my code***************************
 
-        var width = parseInt(word_span.css("width")),
-            height = parseInt(word_span.css("height")),
+        var rect = word_span.getBoundingClientRect();
+        var width = parseInt(rect.width),
+            height = parseInt(rect.height),
             left = options.center.x - width / 2.0,
             top = options.center.y - height / 2.0;
 
-        word_span.attr("x",left);
-        word_span.attr("y",top);
+        word_span.setAttribute("x",left);
+        word_span.setAttribute("y",top);
+        // word_span.attr("x",left);
+        // word_span.attr("y",top);
 
         while(hitTest(word_span, already_placed_words)) {
           // option shape is 'rectangular' so move the word in a rectangular spiral
@@ -190,8 +217,10 @@
             left = options.center.x - (width / 2.0) + (radius*Math.cos(angle)) * aspect_ratio;
             top = options.center.y + radius*Math.sin(angle) - (height / 2.0);
           }
-          word_span.attr("x",left);
-          word_span.attr("y",top);
+          // word_span.attr("x",left);
+          word_span.setAttribute("x",left);
+          word_span.setAttribute("y",top);
+          // word_span.attr("y",top);
         }
 
         // Don't render word if part of it would be outside the container
@@ -199,7 +228,6 @@
           word_span.remove();
           return;
         }
-
 
         already_placed_words.push(word_span);
 
@@ -241,9 +269,8 @@
 	
     // Delay execution so that the browser can render the page before the computatively intensive word cloud drawing
 	drawWordCloud();
-	
-	
+    
     //setTimeout(function(){drawWordCloud();}, 1);
     return $this;
   };
-})(jQuery);
+})(window);
