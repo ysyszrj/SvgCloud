@@ -7,6 +7,7 @@ I code this plugin refer to [JQcloud](http://www.lucaongaro.eu/demos/jqcloud/), 
 ## features
 1. jquery插件
 1. 命名空间
+css继承
 
 ## different version
 For different usage I upload different version of SvgCloud.
