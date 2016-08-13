@@ -10,7 +10,10 @@
 (function (exports) {
     "use strict";
 
+
     function compatible() {
+
+
         var $this = this;
         this.width = function () {
             return pCss($this, "width");
@@ -51,9 +54,15 @@
             }
         };
 
-        this.append(child)=function{
+        this.append = function (child) {
             $this.appendChild(child);
         };
+
+        this.is = function (selector) {
+            if (selector === ":visible") {
+                return true;
+            }
+        }
 
         function pCss(et, prop) {
             var rect = et.getBoundingClientRect();
@@ -61,7 +70,9 @@
         }
 
         (function (exports) {
-            var jquery = {};
+            var jquery = function (selector) {
+                return document.createElement(selector);
+            }
             exports.$ = jquery;
             jquery.extend = function () {
                 var n = arguments.length;
@@ -75,6 +86,7 @@
                         target[name] = o[name];
                     }
                 }
+                return target;
             }
         })(window)
     }
@@ -240,8 +252,8 @@
                     if (options.encodeURI) {
                         word.link = $.extend(word.link, {href: encodeURI(word.link.href).replace(/'/g, "%27")});
                     }
-
-                    inner_html = $('<a>').attr(word.link).text(word.text);
+                    inner_html =
+                        inner_html = $('<a>').attr(word.link).text(word.text);
                 } else {
                     inner_html = word.text;
                 }

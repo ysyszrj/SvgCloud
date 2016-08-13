@@ -2,7 +2,7 @@
 
 SvgCloud is a Jquery plugin that build svg word cloud and extend for more function.
 I code this plugin refer to [JQcloud](http://www.lucaongaro.eu/demos/jqcloud/), which is a jQuery plugin that builds neat and pure HTML + CSS word clouds
->SvgCloud是
+SvgCloud是
 
 ## features
 1. jquery插件
