@@ -1,22 +1,52 @@
-分为几个文件夹，每个文件夹有不同的内容。
+# svgCloud
+一个借助svg技术的词云生成插件,更有支持动态改变的词云，[请戳]()
 
- - src
-  svg源文件
- - dist
- 压缩文件
- - demo
- 文件
+## 功能特点
+### v1版本
+- 利用svg生成词云
+- 支持jQuery插件版本
+- 内置简单的jQuery兼容函数，支持非插件版本
+- 效果如下
+![svgcloud.1.x.js](image/SvgCloud1.png)
 
- 版本1，只支持词云的普通显示，利用svg来实现，原来依赖于d3.js，现在去掉d3.js的依赖
- 
- 版本2，去掉jquery的依赖，兼容以前的代码
- 重写.width() .height()
- 重写.attr()
- 重写$.extend() 简化深拷贝的内容，浅拷贝
- .fn.css()属性
- 高版本 documentElement.currentStyle来判断样式
- 低版本用 documentElement.currentStyle
+## directory
+### svg_cloud_v1_jquery
+支持jQuery版本
+#### 使用方法
+1. 引入jquery和svgcloud的js文件
+```
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="svgcloud-1.0.0.js"></script>
+```
+2. 数据格式如下
+```
+var word_list = [
+    {text: "Dolor", weight: 9.4},
+    {text: "Sit", weight: 8}
+];
+```
+3. 调用插件,selector为生成词语你的dom节点，word_list为数据内容，font_color是字体颜色配置_
+```
+$(selector).SvgCloud(word_list, {font_color: color});
+```
+4. svg_cloud_v1_jquery的index.html是一个demo
 
- 版本2， 支持词云动态更新，也就是允许前一个词云和后一个词云之间能够保持一定的关系。
-
- 插件有几个不同的版本，第一个版本是没有
+### svg_cloud_v1
+不支持jQuery版本
+#### 使用方法
+1. 引入jquery和svgcloud的js文件
+```
+<script type="text/javascript" src="svgcloud-1.0.0.js"></script>
+```
+2. 数据格式如下
+```
+var word_list = [
+    {text: "Dolor", weight: 9.4},
+    {text: "Sit", weight: 8}
+];
+```
+3. 调用插件,selector为生成词语你的dom节点，word_list为数据内容，font_color是字体颜色配置_
+```
+$(selector).SvgCloud(word_list, {font_color: color});
+```
+4. svg_cloud_v1的index.html是一个demo
