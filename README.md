@@ -1,51 +1,52 @@
-# SvgCloud:word cloud for svg layout
+# svgCloud
+一个借助svg技术的词云生成插件,更有支持动态改变的词云，[请戳]()
 
-SvgCloud is a Jquery plugin that build svg word cloud and extend for more function.
-I code this plugin refer to [JQcloud](http://www.lucaongaro.eu/demos/jqcloud/), which is a jQuery plugin that builds neat and pure HTML + CSS word clouds
-SvgCloud是
-
-## features
-1. jquery插件
-1. 命名空间
-css继承
-
-## different version
-For different usage I upload different version of SvgCloud.
-### svgcloud.1.x.js 
-This version just visualization the words and the wight.It shows all word with one color,you can set the font color with the option of "font-color".
-Example is [here](http://ysyszrj.github.io/svgcloud/SvgCloud_1_font-size.html)
-
-
+## 功能特点
+### v1版本
+- 利用svg生成词云
+- 支持jQuery插件版本
+- 内置简单的jQuery兼容函数，支持非插件版本
+- 效果如下
 ![svgcloud.1.x.js](image/SvgCloud1.png)
 
-#### Installation
-1. Make sure to import jquery.js and d3.js in your project.
-2. Download the SvgCloud and import it in your html files.
-
-#### Usage
-You can see the detail usage in the package of examples. However, there are some extra options to explain. 
-
-#### Common Options
-
-#### Word Options
-
-#### Cloud Options:
-
-SvgCloud accepts an object containing configurations for the whole cloud as the second argument:
-
-```javascript
-$("#example").SvgCloud(word_list, {
-  width: 300,
-  height: 200
-});
+## directory
+### svg_cloud_v1_jquery
+支持jQuery版本
+#### 使用方法
+1. 引入jquery和svgcloud的js文件
 ```
-
-### Version Options
-
-SvgCloud.1.x.js
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="svgcloud-1.0.0.js"></script>
 ```
- $("#ele").SvgCloud(word_list,{
-    font_color: color
- });
+2. 数据格式如下
 ```
+var word_list = [
+    {text: "Dolor", weight: 9.4},
+    {text: "Sit", weight: 8}
+];
+```
+3. 调用插件,selector为生成词语你的dom节点，word_list为数据内容，font_color是字体颜色配置_
+```
+$(selector).SvgCloud(word_list, {font_color: color});
+```
+4. svg_cloud_v1_jquery的index.html是一个demo
 
+### svg_cloud_v1
+不支持jQuery版本
+#### 使用方法
+1. 引入jquery和svgcloud的js文件
+```
+<script type="text/javascript" src="svgcloud-1.0.0.js"></script>
+```
+2. 数据格式如下
+```
+var word_list = [
+    {text: "Dolor", weight: 9.4},
+    {text: "Sit", weight: 8}
+];
+```
+3. 调用插件,selector为生成词语你的dom节点，word_list为数据内容，font_color是字体颜色配置_
+```
+$(selector).SvgCloud(word_list, {font_color: color});
+```
+4. svg_cloud_v1的index.html是一个demo
