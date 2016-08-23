@@ -1,5 +1,5 @@
 # svgCloud
-一个借助svg技术的词云生成插件,更有支持动态改变的词云，[请戳]()
+一个借助svg技术的词云生成插件,更有支持动态改变的词云，[请戳](http://ysyszrj.info/SvgCloud/)
 
 ## 功能特点
 ### v1版本
@@ -7,6 +7,7 @@
 - 支持jQuery插件版本
 - 内置简单的jQuery兼容函数，支持非插件版本
 - 效果如下
+
 ![svgcloud.1.x.js](image/SvgCloud1.png)
 
 ## directory
