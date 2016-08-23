@@ -21,9 +21,8 @@
 <h1>SvgCloud Example</h1>
 <div id="my_favorite_latin_words" style=""></div>
 </body>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="svgcloud-1.0.7.js"></script>
+<!--<script type="text/javascript" src="jquery.js"></script>-->
+    <script type="text/javascript" src="svgcloud-1.0.0.js"></script>
     <script type="text/javascript">
         var word_list = [
             {text: "Lorem", weight: 13, link: "https://github.com/DukeLeNoir/jQCloud"},
@@ -75,8 +74,10 @@
             {text: "Sed", weight: 1}
         ];
         var color = "#389";
-        $(function () {
-            $("#my_favorite_latin_words").SvgCloud(word_list, {font_color: color});
-        });
+        SvgCloud("#my_favorite_latin_words",word_list, {font_color: color});
+
+//        $(function () {
+//            $("#my_favorite_latin_words").SvgCloud(word_list, {font_color: color});
+//        });
     </script>
 </html>
