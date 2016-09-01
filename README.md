@@ -2,13 +2,14 @@
 一个借助svg技术的词云生成插件,更有支持动态改变的[词云](https://github.com/ysyszrj/SvgChangeCloud)
 
 ## 功能特点
-代码本身算法参考了(JQCloud)[https://github.com/lucaong/jQCloud]作者的，但是还有有些不一样，版本1主要是svg切换和jquery脱水,当然我懒得写例子也用了作者的例子。
+代码本身算法参考了[JQCloud](https://github.com/lucaong/jQCloud)作者的，但是还有有些不一样，版本1主要是svg切换和jquery脱水,当然我懒得写例子也用了作者的例子。
 ### v1版本
 - 利用svg生成词云
 - 支持jQuery插件版本
 - 内置简单的jQuery兼容函数，支持非插件版本
 - 效果如下
 [网页效果](http://ysyszrj.info/SvgCloud/)
+
 ![svgcloud.1.x.js](image/SvgCloud1.png)
 
 ## directory
