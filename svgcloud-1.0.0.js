@@ -4,7 +4,7 @@
  *
  * Version 1.0.0
  *
- * modefying the code of jQCloud(https://github.com/lucaong/)
+ * modify the code of jQCloud(https://github.com/lucaong/)
  */
 
 (function (exports) {
@@ -17,7 +17,6 @@
             return pCss($this, "width");
         };
         this.height = function () {
-            console.log(this);
             return pCss($this, "height");
         };
         this.attr = function (key, value) {
@@ -29,7 +28,6 @@
             }
         };
 
-        // #83，#356，第一步，小驼峰
         var rmsPrefix = /^-ms-/,
             rdashAlpha = /-([\da-z])/gi,
             fcamelCase = function (all, letter) {
@@ -62,7 +60,7 @@
             if (selector === ":visible") {
                 return true;
             }
-        }
+        };
 
         function pCss(et, prop) {
             var rect = et.getBoundingClientRect();
